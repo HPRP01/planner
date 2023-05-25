@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex: auto;
+  width: 100%;
+}
+
+.add-task-button {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.sidenav {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+}
