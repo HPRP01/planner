@@ -3,10 +3,12 @@
   <div class="mat-app-background">
     <mat-sidenav-container class="sidenav">
       <mat-sidenav #sidenav mode="side" position="end">
-        <div class="theme-toggle">
-          <mat-icon>light_mode</mat-icon>
-          <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
-          <mat-icon>dark_mode</mat-icon>
+        <div class="sidenavMenu">
+          <div class="theme-toggle">
+            <mat-icon>light_mode</mat-icon>
+            <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
+            <mat-icon>dark_mode</mat-icon>
+        </div>
         </div>
       </mat-sidenav>
       <mat-sidenav-content>
