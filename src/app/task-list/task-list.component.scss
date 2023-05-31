@@ -1,14 +1,14 @@
 .column-container {
   display: flex;
   flex-direction: row;
-  flex: 1;
+  justify-content: space-between;
 }
 
 .list-container {
   margin: 10px;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
-  flex-grow: 1;
 }
 
 .cdk-drop-list-dragging .cdk-drag {

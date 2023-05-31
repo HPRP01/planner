@@ -8,7 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public darkTheme: boolean = false;
+  public darkTheme: boolean = true;
 
 
   @ViewChild('sidenav') public sidenav!: MatSidenav;

@@ -18,4 +18,14 @@ export class TaskService {
   {
     this.tasks.push(taskName);
   }
+
+  public deleteTask(taskId: number): void
+  {
+
+  }
+
+  public updateStatus(taskId: number, status: string): void
+  {
+    
+  }
 }
