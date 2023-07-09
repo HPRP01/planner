@@ -2,16 +2,19 @@
 <div  [class.darkMode]="darkTheme">
   <div class="mat-app-background">
     <mat-sidenav-container class="sidenav">
+
       <mat-sidenav #sidenav mode="side" position="end">
         <div class="sidenavMenu">
           <div class="theme-toggle">
             <mat-icon>light_mode</mat-icon>
             <mat-slide-toggle [(ngModel)]="darkTheme"></mat-slide-toggle>
             <mat-icon>dark_mode</mat-icon>
-        </div>
+          </div>
         </div>
       </mat-sidenav>
+
       <mat-sidenav-content>
+
         <div class="toolbar" role="banner">
           <app-toolbar></app-toolbar>
         </div>
@@ -19,10 +22,11 @@
         <div class="content" role="main">
           <app-board></app-board>
           
-          <button mat-fab class="add-task-button">
+          <button mat-fab class="add-task-button" (click)="addTask()">
             <mat-icon>add</mat-icon>
           </button>
         </div>
+
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

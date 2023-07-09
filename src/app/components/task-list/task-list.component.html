@@ -2,10 +2,10 @@
   <div 
     class="list-container" 
     cdkDropList 
-    [cdkDropListData]="todo"
+    [cdkDropListData]="(todo$ | async) ?? todo"
     (cdkDropListDropped)="drop($event)">
     <h3>To Do</h3>
-    <div *ngFor="let item of todo" cdkDrag>
+    <div *ngFor="let item of todo$ | async" cdkDrag>
       <app-task-card [taskName]="item.toString()"></app-task-card>
     </div>
   </div>

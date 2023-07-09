@@ -1,18 +1,34 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../../services/task.service';
+import { Observable } from 'rxjs';
+import { Task } from '../../Models/task.model';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.scss']
 })
-export class TaskListComponent {
-  todo = [1111, 2222, 3333, 4444, 5555, 6666];
-  doing = [9999];
-  done = [0];
+export class TaskListComponent implements OnInit
+{
+  todo$!: Observable<string[]>;
+  
+  constructor(private taskService: TaskService)
+  {
+
+  }
+
+  ngOnInit() 
+  {
+    this.todo$ = this.taskService.toDo$;
+  }
+  
+  todo = ['1111', '2222', '3333', '4444', '5555', '6666'];
+  doing = ['9999'];
+  done = ['0'];
   categories = ["todo", "done"]
 
-  drop(event: CdkDragDrop<number[]>) {
+  drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
