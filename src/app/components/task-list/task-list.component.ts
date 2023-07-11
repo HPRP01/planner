@@ -12,6 +12,8 @@ import { Task } from '../../Models/task.model';
 export class TaskListComponent implements OnInit
 {
   todo$!: Observable<string[]>;
+
+  task$!: Observable<Task[]>;
   
   constructor(private taskService: TaskService)
   {
@@ -21,14 +23,16 @@ export class TaskListComponent implements OnInit
   ngOnInit() 
   {
     this.todo$ = this.taskService.toDo$;
+    this.task$ = this.taskService.task$;
   }
   
   todo = ['1111', '2222', '3333', '4444', '5555', '6666'];
+  task = [];
   doing = ['9999'];
   done = ['0'];
   categories = ["todo", "done"]
 
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -38,6 +42,8 @@ export class TaskListComponent implements OnInit
         event.previousIndex,
         event.currentIndex,
       );
+      console.log(event.item.data);
+      this.taskService.updateStatus(event.item.data.id, 'doing');
     }
   }
 }

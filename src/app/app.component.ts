@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { TaskService } from './services/task.service';
 import { v4 as uuidv4 } from 'uuid';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { Task } from './Models/task.model';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,11 @@ export class AppComponent {
   {
 
   }
+  
+  ngOnInit(): void
+  {
+    this.taskService.getTasks();
+  }
 
   ngAfterViewInit(): void
   {
@@ -28,6 +34,6 @@ export class AppComponent {
 
   addTask(): void
   {
-    this.taskService.addTask(uuidv4());
+    this.taskService.save(new Task(0, "Title", "Description", new Date(), "new", 1));
   }
 }
