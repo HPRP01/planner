@@ -5,6 +5,8 @@ import { TaskService } from './services/task.service';
 import { v4 as uuidv4 } from 'uuid';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { Task } from './Models/task.model';
+import { TaskInfoDialogComponent } from './components/task-info-dialog/task-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -14,10 +16,12 @@ import { Task } from './Models/task.model';
 export class AppComponent {
   public darkTheme: boolean = true;
 
-
   @ViewChild('sidenav') public sidenav!: MatSidenav;
 
-  constructor(private sidenavService: SidenavService, private taskService: TaskService)
+  constructor(
+    private sidenavService: SidenavService, 
+    private taskService: TaskService,
+    private dialog: MatDialog)
   {
 
   }
@@ -34,6 +38,10 @@ export class AppComponent {
 
   addTask(): void
   {
-    this.taskService.save(new Task(0, "Title", "Description", new Date(), "new", 1));
+    const dialogRef = this.dialog.open(TaskInfoDialogComponent);
+
+    dialogRef.afterClosed().subscribe(
+      data => this.taskService.save(new Task(data.id, data.title, data.description, data.date, "new", 1))
+    );
   }
 }

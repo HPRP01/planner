@@ -1,5 +1,6 @@
 <div cdkDropListGroup class="column-container">
   <div 
+    id="new"
     class="list-container" 
     cdkDropList 
     [cdkDropListData]="(task$ | async) ?? task"
@@ -13,6 +14,7 @@
   </div>
 
   <div 
+    id="doing"
     class="list-container" 
     cdkDropList 
     [cdkDropListData]="(task$ | async) ?? task"
@@ -26,6 +28,7 @@
   </div>
 
   <div 
+    id="done"
     class="list-container" 
     cdkDropList 
     [cdkDropListData]="(task$ | async) ?? task"
