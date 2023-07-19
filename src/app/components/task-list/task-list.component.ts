@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Observable } from 'rxjs';
 import { Task } from '../../Models/task.model';
@@ -13,15 +13,29 @@ export class TaskListComponent implements OnInit
 {
   task$!: Observable<Task[]>;
   task = [];
+
+  columnHeight: number = 0;
   
   constructor(private taskService: TaskService)
   {
 
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.setColumnHeight;
+  }
+
   ngOnInit() 
   {
     this.task$ = this.taskService.task$;
+    this.setColumnHeight();
+  }
+
+  setColumnHeight() {
+    const windowHeight = window.innerHeight;
+
+    this.columnHeight = windowHeight;
   }
   
 

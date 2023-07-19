@@ -36,6 +36,11 @@ export class AppComponent {
     this.sidenavService.setSidenav(this.sidenav);
   }
 
+  sidenavAction(): void
+  {
+    this.sidenavService.close();
+  }
+
   addTask(): void
   {
     const dialogRef = this.dialog.open(TaskInfoDialogComponent);
