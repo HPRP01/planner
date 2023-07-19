@@ -1,7 +1,16 @@
   <mat-card>
-    <span>{{task.id}}</span>
-    <span>{{task.title}}</span>
-    <span>{{task.dateDue}}</span>
+    <div class="cardData">
+      <span class="taskId">{{task.id}}</span>
+      <div class="mainData">
+        <span
+          matTooltip="{{task.description}}"
+          [matTooltipShowDelay]="250"
+          [matTooltipPosition]="'right'">
+            {{task.title}}
+          </span>
+        <span>{{task.dateDue}}</span>
+      </div>
+    </div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>more_horiz</mat-icon>
     </button>
