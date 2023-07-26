@@ -1,26 +1,28 @@
 <h1 mat-dialog-title>Create Task</h1>
+<div class="dialogContainer">
 
-<mat-dialog-content [formGroup]="form" class="content">
-  <mat-form-field color="accent">
-    <mat-label>Title</mat-label>
-    <input matInput formControlName="title">
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Description</mat-label>
-    <textarea matInput formControlName="description"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Due Date</mat-label>
-    <input type="date" matInput formControlName="date">
-  </mat-form-field>
-
+  <mat-dialog-content [formGroup]="form" class="content">
+    <mat-form-field color="accent">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
   
-
-</mat-dialog-content>
-
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-flat-button [mat-dialog-close]="true" color="primary" (click)="save()">Save</button>
-</mat-dialog-actions>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Due Date</mat-label>
+      <input type="date" matInput formControlName="date">
+    </mat-form-field>
+  
+    
+  
+  </mat-dialog-content>
+  
+  <mat-dialog-actions class="dialogButtons">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button [mat-dialog-close]="true" color="primary" (click)="save()">Save</button>
+  </mat-dialog-actions>
+</div>

@@ -43,7 +43,10 @@ export class AppComponent {
 
   addTask(): void
   {
-    const dialogRef = this.dialog.open(TaskInfoDialogComponent);
+    const dialogRef = this.dialog.open(TaskInfoDialogComponent, {
+      height: '500px',
+      width: '600px'
+    });
 
     dialogRef.afterClosed().subscribe(
       data => this.taskService.save(new Task(data.id, data.title, data.description, data.date, "new", 1))

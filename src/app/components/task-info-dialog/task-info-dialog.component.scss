@@ -2,3 +2,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.dialogButtons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dialogContainer {
+  display: flex;
+  flex-direction: column;
+}
