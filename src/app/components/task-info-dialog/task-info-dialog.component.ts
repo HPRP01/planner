@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Task } from 'src/app/Models/task.model';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-task-info-dialog',
@@ -12,7 +14,8 @@ export class TaskInfoDialogComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<TaskInfoDialogComponent>
+    private dialogRef: MatDialogRef<TaskInfoDialogComponent>,
+    private taskService: TaskService
   ) { 
 
   }
@@ -26,6 +29,11 @@ export class TaskInfoDialogComponent implements OnInit {
   }
 
   save() {
+    if(this.form.valid) 
+    {
+      this.taskService.save(new Task(this.form.value.id, this.form.value.title, this.form.value.description, this.form.value.date, "new", 1));
+    }
+    
     this.dialogRef.close(this.form.value);
   }
 }
